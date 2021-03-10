@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.musclemass">
+    <!-- 인터넷 권한 부여 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Musclemass"
+        android:usesCleartextTraffic="true">
+
+
+        <activity android:name=".Editprofile"></activity>
+        <activity android:name=".ChangePW_change" />
+        <activity android:name=".Changepassword" />
+        <activity android:name=".Profile" />
+        <activity android:name=".RegisterActivity" >
+        </activity>
+        <activity android:name=".Protectionsite" />
+        <activity android:name=".Music" />
+        <activity android:name=".Musclerecord" />
+        <activity android:name=".Muscleplus" />
+        <activity android:name=".Musclechart" />
+        <activity android:name=".Dietrecord" />
+        <activity android:name=".Dietplus" />
+        <activity android:name=".Dietchart" />
+        <activity android:name=".Communitywrite" />
+        <activity android:name=".Community">
+        </activity>
+        <activity android:name=".Home">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Choice" />
+    </application>
+
+</manifest>
