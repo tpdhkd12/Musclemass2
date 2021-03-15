@@ -65,7 +65,7 @@
             android:layout_marginLeft="36dp"
             android:layout_marginBottom="8dp"
             android:text="음식 명"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/foodname"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -74,7 +74,7 @@
             android:layout_height="wrap_content"
             android:text="탄수화물 : "
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/editTextNumber5"
+            app:layout_constraintEnd_toStartOf="@+id/carbohydrate_edit"
             app:layout_constraintHorizontal_bias="0.848"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -88,7 +88,7 @@
             android:layout_marginEnd="28dp"
             android:layout_marginRight="28dp"
             android:text="단백질 : "
-            app:layout_constraintEnd_toStartOf="@+id/editTextNumber8"
+            app:layout_constraintEnd_toStartOf="@+id/protein_edit"
             app:layout_constraintTop_toBottomOf="@+id/textView50" />
 
         <TextView
@@ -99,23 +99,23 @@
             android:layout_marginEnd="28dp"
             android:layout_marginRight="28dp"
             android:text="지방 : "
-            app:layout_constraintEnd_toStartOf="@+id/editTextNumber9"
+            app:layout_constraintEnd_toStartOf="@+id/fat_edit"
             app:layout_constraintTop_toBottomOf="@+id/textView51" />
 
         <EditText
-            android:id="@+id/editTextNumber5"
+            android:id="@+id/carbohydrate_edit"
             android:layout_width="50dp"
             android:layout_height="47dp"
             android:ems="10"
             android:inputType="number"
-            app:layout_constraintBottom_toTopOf="@+id/editTextNumber8"
+            app:layout_constraintBottom_toTopOf="@+id/protein_edit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.684"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editTextNumber8"
+            android:id="@+id/protein_edit"
             android:layout_width="50dp"
             android:layout_height="47dp"
             android:layout_marginBottom="156dp"
@@ -127,7 +127,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/editTextNumber9"
+            android:id="@+id/fat_edit"
             android:layout_width="50dp"
             android:layout_height="47dp"
             android:layout_marginBottom="84dp"
@@ -142,11 +142,11 @@
             android:id="@+id/textView53"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="44dp"
+            android:layout_marginTop="28dp"
             android:text="g"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.301"
-            app:layout_constraintStart_toEndOf="@+id/editTextNumber5"
+            app:layout_constraintStart_toEndOf="@+id/carbohydrate_edit"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -158,7 +158,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.301"
-            app:layout_constraintStart_toEndOf="@+id/editTextNumber8"
+            app:layout_constraintStart_toEndOf="@+id/protein_edit"
             app:layout_constraintTop_toBottomOf="@+id/textView53"
             app:layout_constraintVertical_bias="0.948" />
 
@@ -168,25 +168,25 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="26dp"
             android:layout_marginLeft="26dp"
-            android:layout_marginBottom="92dp"
+            android:layout_marginBottom="100dp"
             android:text="g"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.075"
-            app:layout_constraintStart_toEndOf="@+id/editTextNumber9" />
+            app:layout_constraintStart_toEndOf="@+id/fat_edit" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/foodname_edit"
             android:layout_width="91dp"
             android:layout_height="45dp"
             android:layout_marginBottom="152dp"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.05"
             app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
@@ -194,19 +194,16 @@
         android:layout_height="276dp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView59"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:text="바나나 : 탄수화물 20g, 단백질 4g, 지방 1g" />
+            android:layout_height="2dp"
+            android:layout_centerInParent="true"
+            android:background="#999999" />
 
-        <TextView
-            android:id="@+id/textView62"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/diet_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:text="닭가슴살 : 탄수화물 5g, 단백질 16g, 지방 1g" />
+            android:layout_height="match_parent" />
 
 
     </LinearLayout>
@@ -215,14 +212,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView63"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="탄수화물 : 25g, 단백질 20g, 지방 2g"
-            android:gravity="center"
-            />
+            android:layout_height="2dp"
+            android:layout_centerInParent="true"
+            android:background="#999999"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_centerInParent="true"
+            android:background="#999999"/>
 
         <Button
             android:id="@+id/dietplus_record"

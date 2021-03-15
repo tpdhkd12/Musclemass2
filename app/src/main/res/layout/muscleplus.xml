@@ -64,7 +64,7 @@
 
             <EditText
                 android:id="@+id/editTextNumber3"
-                android:layout_width="66dp"
+                android:layout_width="47dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -79,7 +79,7 @@
 
             <EditText
                 android:id="@+id/editTextNumber4"
-                android:layout_width="49dp"
+                android:layout_width="36dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -92,10 +92,25 @@
                 android:layout_weight="1"
                 android:text="회" />
 
+            <EditText
+                android:id="@+id/editTextTextPersonName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:inputType="textPersonName"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="set" />
+
             <Button
                 android:id="@+id/button10"
-                android:layout_width="82dp"
-                android:layout_height="38dp"
+                android:layout_width="64dp"
+                android:layout_height="42dp"
                 android:layout_weight="1"
                 android:text="추가" />
 
@@ -123,7 +138,7 @@
 
                 <EditText
                     android:id="@+id/editTextNumber"
-                    android:layout_width="66dp"
+                    android:layout_width="47dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
@@ -138,7 +153,7 @@
 
                 <EditText
                     android:id="@+id/editTextNumber2"
-                    android:layout_width="49dp"
+                    android:layout_width="36dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
@@ -151,10 +166,25 @@
                     android:layout_weight="1"
                     android:text="회" />
 
+                <EditText
+                    android:id="@+id/editTextTextPersonNam2e"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="textPersonName"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/textVi3ew7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="set" />
+
                 <Button
                     android:id="@+id/button4"
-                    android:layout_width="82dp"
-                    android:layout_height="38dp"
+                    android:layout_width="64dp"
+                    android:layout_height="42dp"
                     android:layout_weight="1"
                     android:text="추가" />
 
@@ -179,7 +209,7 @@
 
                 <EditText
                     android:id="@+id/editTextNumber6"
-                    android:layout_width="66dp"
+                    android:layout_width="47dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
@@ -194,7 +224,7 @@
 
                 <EditText
                     android:id="@+id/editTextNumber7"
-                    android:layout_width="49dp"
+                    android:layout_width="36dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
@@ -207,10 +237,25 @@
                     android:layout_weight="1"
                     android:text="회" />
 
+                <EditText
+                    android:id="@+id/editTextTe23xtPersonName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="textPersonName"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/textV42iew7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="set" />
+
                 <Button
                     android:id="@+id/button11"
-                    android:layout_width="82dp"
-                    android:layout_height="38dp"
+                    android:layout_width="64dp"
+                    android:layout_height="42dp"
                     android:layout_weight="1"
                     android:text="추가" />
 
@@ -224,11 +269,9 @@
         android:orientation="vertical">
 
 
-        <TextView
-            android:id="@+id/textView29"
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_height="256dp"
-            android:text="위에서 추가 버튼 클릭하면 추가되도록, 그리고 리사이클러 뷰" />
+            android:layout_height="221dp" />
 
         <LinearLayout
             android:layout_width="match_parent"

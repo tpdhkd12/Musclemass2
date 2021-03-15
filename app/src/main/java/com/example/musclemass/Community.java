@@ -1,43 +1,37 @@
 package com.example.musclemass;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import java.util.ArrayList;
 
 public class Community extends AppCompatActivity {
 
+    RecyclerView mRecyclerView = null;
+    RecyclerImageTextAdapter mAdapter = null;
+    ArrayList<Communityitem> mList = new ArrayList<>();
 
-    String save_head;
-    String save_text;
-
-
+    String nickname;
+    String head;
+    String body;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.community);
 
-        TextView community_head = (TextView) findViewById(R.id.community_head);
-        TextView community_text = (TextView) findViewById(R.id.community_text);
-
-        Intent intent = getIntent();
-        community_head.setText(intent.getStringExtra("communityhead"));
-        community_text.setText(intent.getStringExtra("communityacc"));
-
-
-
         Intent getintent = getIntent();
-        save_head = getintent.getStringExtra("communityhead1");
-        save_text = getintent.getStringExtra("communityacc1");
-
-
+        nickname = getintent.getStringExtra("usernickname");
 
 
 
@@ -69,19 +63,29 @@ public class Community extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent profile_getintent = getIntent();
-                        String save_name = profile_getintent.getStringExtra("username");
-                        String save_nickname = profile_getintent.getStringExtra("usernickname");
 
                         Intent intent = new Intent(v.getContext(), Communitywrite.class);
-                        intent.putExtra("communityhead1", save_head);
-                        intent.putExtra("communityacc1", save_text);
-                        intent.putExtra("username",save_name);
-                        intent.putExtra("usernickname",save_nickname);
-                        startActivity(intent);
+                        intent.putExtra("usernickname",nickname);
+                        startActivityForResult(intent, 202);
                     }
                 }
         );
+        ImageButton community_search = (ImageButton) findViewById(R.id.community_search);
+        community_search.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+
+                        Intent prior_intent = new Intent(v.getContext(), Community_confirm.class);
+
+                        startActivity(prior_intent);
+
+                        finish();
+                    }
+                }
+        );
+
 
 
 
@@ -106,6 +110,44 @@ public class Community extends AppCompatActivity {
         finish();
 
 
+
+    }
+
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == 202) {
+            if (resultCode == 1) {
+
+                head = data.getStringExtra("communityhead1");
+                body = data.getStringExtra("communityacc1");
+                nickname = data.getStringExtra("usernickname1");
+
+                if (head != null && body !=null) {
+                    mRecyclerView = findViewById(R.id.community_recyclerview);
+                    mAdapter = new RecyclerImageTextAdapter(this , mList);
+                    mRecyclerView.setAdapter(mAdapter);
+                    mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+                    Communityitem item = new Communityitem(head, body, nickname);
+                    mList.add(item);
+                    mAdapter.notifyDataSetChanged();
+                }
+
+
+
+            }else if (resultCode == 2){
+
+            }
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
     }
 }

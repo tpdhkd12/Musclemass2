@@ -67,12 +67,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="212dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/community_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="661dp" />
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </LinearLayout>

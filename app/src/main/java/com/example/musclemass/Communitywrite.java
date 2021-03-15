@@ -11,30 +11,24 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class Communitywrite extends AppCompatActivity {
-
-    private String savehead;
-    private String savetext;
-
+    String save_nickname;
+    private String head;
+    private String body;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.communitywrite);
 
-        Intent getintent = getIntent();
-        savehead = getintent.getStringExtra("communityhead1");
-        savetext = getintent.getStringExtra("communityacc1");
-        startActivity(getintent);
-
-
-
-
         EditText communityhead = (EditText) findViewById(R.id.communityhead);
         EditText communityacc = (EditText) findViewById(R.id.communityacc);
 
+        Intent profile_getintent = getIntent();
+        String save_name = profile_getintent.getStringExtra("username");
+        save_nickname = profile_getintent.getStringExtra("usernickname");
 
-        communityacc.setText(savetext);
-        communityhead.setText(savehead);
+
+
 
 
 
@@ -45,17 +39,13 @@ public class Communitywrite extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
 
-                        Intent profile_getintent = getIntent();
-                        String save_name = profile_getintent.getStringExtra("username");
-                        String save_nickname = profile_getintent.getStringExtra("usernickname");
 
 
-                        Intent intent = new Intent(v.getContext(), Community.class);
-                        intent.putExtra("communityhead1",savehead);
-                        intent.putExtra("communityacc1",savetext);
+
+                        Intent intent = new Intent();
                         intent.putExtra("username",save_name);
                         intent.putExtra("usernickname",save_nickname);
-                        startActivity(intent);
+                        setResult(2, intent);
                     }
                 }
         );
@@ -65,16 +55,17 @@ public class Communitywrite extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent profile_getintent = getIntent();
-                        String save_name = profile_getintent.getStringExtra("username");
-                        String save_nickname = profile_getintent.getStringExtra("usernickname");
 
-                        Intent intent = new Intent(v.getContext(), Community.class);
-                        intent.putExtra("username",save_name);
-                        intent.putExtra("usernickname",save_nickname);
-                        intent.putExtra("communityhead",communityhead.getText().toString());
-                        intent.putExtra("communityacc",communityacc.getText().toString());
-                        startActivity(intent);
+                        head = communityhead.getText().toString();
+                        body = communityacc.getText().toString();
+
+
+                        Intent intent = new Intent();
+                        intent.putExtra("usernickname1",save_nickname);
+                        intent.putExtra("communityhead1",head);
+                        intent.putExtra("communityacc1", body);
+                        setResult(1,intent);
+                        finish();
                     }
                 }
         );
@@ -90,11 +81,11 @@ public class Communitywrite extends AppCompatActivity {
         String save_nickname = profile_getintent.getStringExtra("usernickname");
 
 
-        Intent prior_intent = new Intent(this, Choice.class);
+        Intent prior_intent = new Intent();
         prior_intent.putExtra("username",save_name);
         prior_intent.putExtra("usernickname",save_nickname);
 
-        startActivity(prior_intent);
+        setResult(2, prior_intent);
 
         finish();
 
