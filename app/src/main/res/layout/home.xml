@@ -4,16 +4,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/main1">
 
     <Button
         android:id="@+id/btn_login"
-        android:layout_width="208dp"
-        android:layout_height="33dp"
+        android:layout_width="211dp"
+        android:layout_height="41dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="84dp"
+        android:backgroundTint="#ffffff"
         android:text="로그인"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/login_pw"
         app:layout_constraintTop_toBottomOf="@+id/login_pw"
@@ -21,10 +24,12 @@
 
     <Button
         android:id="@+id/btn_register"
-        android:layout_width="208dp"
-        android:layout_height="33dp"
+        android:layout_width="211dp"
+        android:layout_height="41dp"
         android:layout_marginTop="20dp"
         android:text="회원가입"
+        android:textColor="#000000"
+        android:backgroundTint="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btn_login"
         app:layout_constraintHorizontal_bias="0.0"
@@ -37,13 +42,17 @@
         android:layout_width="224dp"
         android:layout_height="48dp"
         android:ems="10"
-        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.401" />
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        android:hint="아이디"
+        android:singleLine="true"
+        android:textStyle="bold"
+        app:layout_constraintVertical_bias="0.433" />
 
     <EditText
         android:id="@+id/login_pw"
@@ -52,6 +61,10 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="textPassword"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:hint="비밀번호"
+        android:textColorHint="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/login_id"
         app:layout_constraintHorizontal_bias="0.0"
@@ -59,35 +72,29 @@
         app:layout_constraintTop_toBottomOf="@+id/login_id"
         app:layout_constraintVertical_bias="0.062" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="392dp"
-        android:layout_height="242dp"
-        app:layout_constraintBottom_toTopOf="@+id/login_id"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.015"
-        app:srcCompat="@drawable/t" />
-
     <TextView
         android:id="@+id/textView2"
         android:layout_width="50dp"
         android:layout_height="34dp"
-        android:text="ID"
         android:gravity="center"
+        android:text="ID"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/login_id"
-        app:layout_constraintHorizontal_bias="0.848"
+        app:layout_constraintHorizontal_bias="0.869"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
+        app:layout_constraintVertical_bias="0.424" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="50dp"
         android:layout_height="34dp"
         android:gravity="center"
+
+        android:textColor="#ffffff"
+        android:textStyle="bold"
         android:text="P/W"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/login_pw"

@@ -103,7 +103,7 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="리사이클러뷰"
+            android:text=""
             android:textSize="30dp" />
     </LinearLayout>
 

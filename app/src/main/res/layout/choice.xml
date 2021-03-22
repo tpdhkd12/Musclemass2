@@ -73,6 +73,7 @@
                     android:layout_width="56dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textStyle="bold"
                     android:gravity="center"
                     android:text="프로필" />
 
@@ -82,6 +83,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="운동 기록"
+                    android:textStyle="bold"
                     android:gravity="center"/>
             </LinearLayout>
 
@@ -119,6 +121,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:textStyle="bold"
                     android:text="식단 기록" />
 
                 <TextView
@@ -127,6 +130,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="보호대 구매"
+                    android:textStyle="bold"
                     android:gravity="center"/>
             </LinearLayout>
 
@@ -163,6 +167,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:textStyle="bold"
                     android:text="음악" />
 
                 <TextView
@@ -170,6 +175,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textStyle="bold"
                     android:text="커뮤니티"
                     android:gravity="center"/>
             </LinearLayout>

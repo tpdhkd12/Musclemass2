@@ -65,7 +65,7 @@
             android:layout_marginLeft="36dp"
             android:layout_marginBottom="8dp"
             android:text="음식 명"
-            app:layout_constraintBottom_toTopOf="@+id/foodname"
+            app:layout_constraintBottom_toTopOf="@+id/foodname_edit"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView

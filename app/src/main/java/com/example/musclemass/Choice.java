@@ -13,10 +13,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Choice extends AppCompatActivity {
+    private String id;
+    private String pw;
 
-    private String profile_name;
-    private String profile_nickname;
-    private String password;
     private ImageButton goprofile;
     private ImageButton btn_gomusclerecord;
     private ImageButton godietrecord;
@@ -35,10 +34,6 @@ public class Choice extends AppCompatActivity {
         gomusic = (ImageButton) findViewById(R.id.gomusic);
         gocommunity = (ImageButton) findViewById(R.id.gocommunity);
 
-        Intent gintent = getIntent();
-        password = gintent.getStringExtra("password");
-        profile_name = gintent.getStringExtra("username");
-        profile_nickname = gintent.getStringExtra("usernickname");
 
 
         // 프로필로 이동 //
@@ -48,12 +43,7 @@ public class Choice extends AppCompatActivity {
                     public void onClick(View view) {
 
                         Intent intent = new Intent(view.getContext(), Profile.class);
-                        intent.putExtra("username", profile_name);
-                        intent.putExtra("usernickname", profile_nickname);
-                        intent.putExtra("password",password);
-
                         startActivity(intent);
-                        finish();
                     }
 
 
@@ -68,11 +58,7 @@ public class Choice extends AppCompatActivity {
 
 
                         Intent muscleintent = new Intent(v.getContext(), Musclerecord.class);
-                        muscleintent.putExtra("username", profile_name);
-                        muscleintent.putExtra("usernickname", profile_nickname);
-
                         startActivity(muscleintent);
-                        finish();
                     }
                 });
         // 식단 기록 액티비티로 이동 //
@@ -81,11 +67,8 @@ public class Choice extends AppCompatActivity {
                     public void onClick(View view) {
 
                         Intent dietrecordintent = new Intent(view.getContext(), Dietrecord.class);
-                        dietrecordintent.putExtra("username",profile_name);
-                        dietrecordintent.putExtra("usernickname",profile_nickname);
                         startActivity(dietrecordintent);
 
-                        finish();
                     }
                 }
         );
@@ -95,11 +78,8 @@ public class Choice extends AppCompatActivity {
                     public void onClick(View view) {
 
                         Intent protectionintent = new Intent(view.getContext(), Protectionsite.class);
-                        protectionintent.putExtra("username",profile_name);
-                        protectionintent.putExtra("usernickname",profile_nickname);
                         startActivity(protectionintent);
 
-                        finish();
                     }
                 }
         );
@@ -110,11 +90,9 @@ public class Choice extends AppCompatActivity {
 
 
                         Intent musicintent = new Intent(view.getContext(), Music.class);
-                        musicintent.putExtra("username",profile_name);
-                        musicintent.putExtra("usernickname",profile_nickname);
                         startActivity(musicintent);
 
-                        finish();
+
                     }
                 }
         );
@@ -124,11 +102,8 @@ public class Choice extends AppCompatActivity {
                     public void onClick(View view) {
 
                         Intent communityintent = new Intent(view.getContext(), Community.class);
-                        communityintent.putExtra("username",profile_name);
-                        communityintent.putExtra("usernickname",profile_nickname);
                         startActivity(communityintent);
 
-                        finish();
                     }
                 }
         );

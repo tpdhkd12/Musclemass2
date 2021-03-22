@@ -30,9 +30,6 @@ public class Community extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.community);
 
-        Intent getintent = getIntent();
-        nickname = getintent.getStringExtra("usernickname");
-
 
 
         ImageButton prior_community = (ImageButton) findViewById(R.id.prior_community);

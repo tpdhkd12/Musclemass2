@@ -4,7 +4,6 @@ public class Diet_item {
 
     private String foodname;
 
-
     private String carbohydrate;
 
     private String protein;
