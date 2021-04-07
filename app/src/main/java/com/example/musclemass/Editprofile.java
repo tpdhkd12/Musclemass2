@@ -54,8 +54,7 @@ public class Editprofile extends AppCompatActivity {
     private ImageView mSetImageView;
 
 
-
-    ArrayList<Userinfo> userinfo ;
+    ArrayList<Userinfo> userinfo;
     private int PICK_IMAGE = 1;
     private int CAPTURE_IMAGE = 2;
     private String imageFilePath;
@@ -63,7 +62,6 @@ public class Editprofile extends AppCompatActivity {
 
     ArrayList<ID_image> id_image;
 
-    ArrayList<ID_image> save_ID_IMAGE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,26 +83,27 @@ public class Editprofile extends AppCompatActivity {
         mSetImageView = (ImageView) findViewById(R.id.imageView7);
 
         // 이미지 파일 저장되어있는거 로드해줘야함 //
+        //edit profile에서 load 후 add 해줘야하는데 만약 같은 id 값이 있으면 set, id 값이 없으면 add //
 
+
+        if (id_image == null) {
+
+            id_image = new ArrayList<>();
+        }
         SharedPreferences sharedPreferences = getSharedPreferences("profile_image", MODE_PRIVATE);
         Gson gson4 = new Gson();
-        String json4 = sharedPreferences.getString("profile_image","");
-        Type type = new TypeToken<ArrayList<ID_image>>() {}.getType();
-        save_ID_IMAGE = gson4.fromJson(json4, type);
+        String json4 = sharedPreferences.getString("profile_image", "");
+        Type type = new TypeToken<ArrayList<ID_image>>() {
+        }.getType();
+        id_image = gson4.fromJson(json4, type);
 
-        if (save_ID_IMAGE == null){
+        for (int i = 0; i < id_image.size(); i++) {
 
-            save_ID_IMAGE = new ArrayList<>();
-        }
-        for (int i = 0; i<save_ID_IMAGE.size(); i++){
+            if (id.equals(id_image.get(i).getId())) {
 
-            if (id.equals(save_ID_IMAGE.get(i).getId())) {
-                String image = save_ID_IMAGE.get(i).getImage();
+                String image = id_image.get(i).getImage();
 
                 photoUri = Uri.parse(image);
-
-                mSetImageView = (ImageView) findViewById(R.id.profile_image);
-
 
                 // for문으로 아이디와 같은 값을 가진 사진만 넣어주면 회원마다 프로필 이미지가 달라짐 //
                 Glide.with(this).asBitmap().load(photoUri).into(mSetImageView);
@@ -115,40 +114,50 @@ public class Editprofile extends AppCompatActivity {
         ////
 
 
-
-
-
-
-
-
         //프로필 변경 하시겠습니까해서 했을때의 onclick //
         Button profile_accept = (Button) findViewById(R.id.profile_accept);
         profile_accept.setOnClickListener(
-                new View.OnClickListener(){
+                new View.OnClickListener() {
                     public void onClick(View view) {
 
                         if (photoUri != null) {
 
                             nickname = edit_nickname.getText().toString();
 
-                            Userinfo user = new Userinfo(id,pw,name,nickname);
-                            userinfo.set(0,user);
+                            Userinfo user = new Userinfo(id, pw, name, nickname);
+                            userinfo.set(0, user);
 
 
                             // 쉐어드에 이미지& id 값 저장 //
 
                             String photo = photoUri.toString();
-                            id_image = new ArrayList<>();
 
-                            ID_image id_imag = new ID_image(id,photo);
-                            id_image.add(id_imag);
+                            ID_image id_imag = new ID_image(id, photo);
+
+                            boolean tf = false;
+
+                            for (int i = 0; i < id_image.size(); i++) {
+
+                                if (id.equals(id_image.get(i).getId())) {
+
+
+                                    tf = true;
+                                    id_image.set(i, id_imag);
+                                }
+                            }
+
+                            if (tf == false) {
+
+                                id_image.add(id_imag);
+                            }
+
 
                             // id와 image값을 arraylist로 만들어서 저장 //
-                            SharedPreferences preferences = getSharedPreferences("profile_image",MODE_PRIVATE);
+                            SharedPreferences preferences = getSharedPreferences("profile_image", MODE_PRIVATE);
                             SharedPreferences.Editor edit = preferences.edit();
                             Gson gson1 = new Gson();
                             String json1 = gson1.toJson(id_image);
-                            edit.putString("profile_image",json1);
+                            edit.putString("profile_image", json1);
                             edit.commit();
 
                             // 쉐어드에 현재접속 유저정보 & 변경된 닉네임 저장 //
@@ -171,8 +180,8 @@ public class Editprofile extends AppCompatActivity {
         );
         Button uploadimage = (Button) findViewById(R.id.uploadimage);
         uploadimage.setOnClickListener(
-                new View.OnClickListener(){
-                    public void onClick(View view){
+                new View.OnClickListener() {
+                    public void onClick(View view) {
 
                         //권한체킹//
 
@@ -189,16 +198,13 @@ public class Editprofile extends AppCompatActivity {
                         photoDialogRadio();
 
 
-
-
-
                     }
                 }
         );
 
         Button profile_cancel = (Button) findViewById(R.id.profile_cancel);
         profile_cancel.setOnClickListener(
-                new View.OnClickListener(){
+                new View.OnClickListener() {
                     public void onClick(View view) {
                         Intent intent = new Intent(view.getContext(), Profile.class);
 
@@ -208,7 +214,6 @@ public class Editprofile extends AppCompatActivity {
                     }
                 }
         );
-
 
 
     }
@@ -225,18 +230,18 @@ public class Editprofile extends AppCompatActivity {
                     takePhotoFromGallery();
                 } else { //카메라
                     Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    if (camera.resolveActivity(getPackageManager()) != null){
+                    if (camera.resolveActivity(getPackageManager()) != null) {
 
                         File photoFile = null;
                         try {
                             photoFile = createImageFile();
 
-                        }catch (IOException e){
+                        } catch (IOException e) {
 
                         }
-                        if (photoFile != null){
+                        if (photoFile != null) {
 
-                            photoUri = FileProvider.getUriForFile(getApplicationContext(),getPackageName(), photoFile);
+                            photoUri = FileProvider.getUriForFile(getApplicationContext(), getPackageName(), photoFile);
                             camera.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
                             startActivityForResult(camera, CAPTURE_IMAGE);
 
@@ -250,7 +255,7 @@ public class Editprofile extends AppCompatActivity {
     }
 
     //이미지파일의 이름을 시간단위로 생성해서 저장을 시켜주기 때문에 중복되지 않는다. //
-    private File createImageFile() throws IOException{
+    private File createImageFile() throws IOException {
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
         String imageFileName = "TEST_" + timeStamp + "_";
         File storgeDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
@@ -269,13 +274,13 @@ public class Editprofile extends AppCompatActivity {
         try {
             photoFile = createImageFile();
 
-        }catch (IOException e){
+        } catch (IOException e) {
 
         }
-        if (photoFile != null){
+        if (photoFile != null) {
 
 
-            photoUri = FileProvider.getUriForFile(getApplicationContext(),getPackageName(), photoFile);
+            photoUri = FileProvider.getUriForFile(getApplicationContext(), getPackageName(), photoFile);
 
         }
         Intent intent = new Intent(Intent.ACTION_PICK);
@@ -287,9 +292,9 @@ public class Editprofile extends AppCompatActivity {
     //갤러리에서 이미지 불러온 후 행동
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK ) {
+        if (resultCode == RESULT_OK) {
 
-            if (requestCode == PICK_IMAGE && data.getData() != null ) {
+            if (requestCode == PICK_IMAGE && data.getData() != null) {
                 //방법1
                 try {
                     //불러온 사진 데이터를 비트맵으로 저장합니다.
@@ -298,14 +303,14 @@ public class Editprofile extends AppCompatActivity {
                     mSetImageView.setImageBitmap(bitmap);
 
 
-                    photoUri = getImageUri(this,bitmap);
+                    photoUri = getImageUri(this, bitmap);
 
 
                 } catch (Exception e) {
                     e.printStackTrace();
 
                 }
-            } else if (requestCode == CAPTURE_IMAGE  ) {
+            } else if (requestCode == CAPTURE_IMAGE) {
 
                 Bitmap bitmap = BitmapFactory.decodeFile(imageFilePath);
                 ExifInterface exif = null;
@@ -313,7 +318,7 @@ public class Editprofile extends AppCompatActivity {
                 try {
                     exif = new ExifInterface(imageFilePath);
 
-                }catch (IOException e){
+                } catch (IOException e) {
 
                     e.printStackTrace();
                 }
@@ -321,46 +326,47 @@ public class Editprofile extends AppCompatActivity {
                 int exifOrientation;
                 int exifDegree;
 
-                if (exif != null){
+                if (exif != null) {
 
                     exifOrientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, ExifInterface.ORIENTATION_NORMAL);
                     exifDegree = exifOrientationToDegrees(exifOrientation);
-                }else {
+                } else {
                     exifDegree = 0;
                 }
 
-                mSetImageView.setImageBitmap(rotate(bitmap,exifDegree));
+                mSetImageView.setImageBitmap(rotate(bitmap, exifDegree));
 
 
             }
         }
     }
 
-    private  int exifOrientationToDegrees(int exifOrientation){
-        if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_90){
+    private int exifOrientationToDegrees(int exifOrientation) {
+        if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_90) {
             return 90;
-        }else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_180){
+        } else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_180) {
             return 180;
-        }else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_270) {
+        } else if (exifOrientation == ExifInterface.ORIENTATION_ROTATE_270) {
             return 270;
         }
         return 0;
     }
 
-    private Bitmap rotate(Bitmap bitmap, float degree){
+    private Bitmap rotate(Bitmap bitmap, float degree) {
         Matrix matrix = new Matrix();
         matrix.postRotate(degree);
-        return Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),matrix,true);
+        return Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
     }
 
     private void loadData() {
         SharedPreferences sharedPreferences = getSharedPreferences("connectuser", MODE_PRIVATE);
         Gson gson = new Gson();
-        String json = sharedPreferences.getString("connectuser","");
-        Type type = new TypeToken<ArrayList<Userinfo>>() {}.getType();
+        String json = sharedPreferences.getString("connectuser", "");
+        Type type = new TypeToken<ArrayList<Userinfo>>() {
+        }.getType();
         userinfo = gson.fromJson(json, type);
 
-        if (userinfo == null){
+        if (userinfo == null) {
             userinfo = new ArrayList<>();
         }
 

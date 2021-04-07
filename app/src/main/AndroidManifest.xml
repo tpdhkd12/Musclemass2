@@ -2,13 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.musclemass">
     <!-- 인터넷 권한 부여 -->
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <!-- 카메라 및 하드웨어의 카메라 기능 권한 부여  -->
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-feature android:name="android.hardware.camera" android:required="true"/>
-    <!-- 읽고 쓰기 권한 부여  -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 카메라 및 하드웨어의 카메라 기능 권한 부여 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" /> <!-- 읽고 쓰기 권한 부여 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -18,16 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Musclemass"
         android:usesCleartextTraffic="true">
-
-
-        <activity android:name=".Editprofile"></activity>
+        <activity android:name=".Editprofile" />
         <activity android:name=".ChangePW_change" />
         <activity android:name=".Changepassword" />
         <activity android:name=".Profile" />
-        <activity android:name=".RegisterActivity" >
-        </activity>
-        <activity android:name=".Protectionsite" />
-        <activity android:name=".Music" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".Musclerecord" />
         <activity android:name=".Muscleplus" />
         <activity android:name=".Musclechart" />
@@ -35,9 +31,10 @@
         <activity android:name=".Dietplus" />
         <activity android:name=".Dietchart" />
         <activity android:name=".Communitywrite" />
-        <activity android:name=".Community_confirm" />
-        <activity android:name=".Community">
-        </activity>
+        <activity
+            android:name=".Community_confirm"
+            />
+        <activity android:name=".Community" />
         <activity android:name=".Home">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,15 +43,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".Choice" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.musclemass"
             android:exported="false"
             android:grantUriPermissions="true">
-        <meta-data
-            android:name="android.support.FILE_PROVIDER_PATHS"
-            android:resource="@xml/file_paths" />
-
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
         </provider>
     </application>
 

@@ -1,5 +1,7 @@
 package com.example.musclemass;
 
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+
 public class Diet_item {
 
     private String foodname;
@@ -10,7 +12,37 @@ public class Diet_item {
 
     private String fat;
 
-    public Diet_item(String foodname, String carbohydrate,  String protein, String fat) {
+    private CalendarDay day;
+
+    public CalendarDay getDay() {
+        return day;
+    }
+
+    public void setDay(CalendarDay day) {
+        this.day = day;
+    }
+
+    private String id;
+
+    private String timeStamp;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    public Diet_item(String foodname, String carbohydrate, String protein, String fat, CalendarDay day, String id, String timeStamp) {
 
         this.carbohydrate = carbohydrate;
 
@@ -19,6 +51,12 @@ public class Diet_item {
         this.protein = protein;
 
         this.fat = fat;
+
+        this.day = day;
+
+        this.id = id;
+
+        this.timeStamp = timeStamp;
 
     }
 

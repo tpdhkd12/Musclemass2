@@ -49,8 +49,8 @@
 
         <ImageView
             android:id="@+id/profile_image"
-            android:layout_width="150dp"
-            android:layout_height="177dp"
+            android:layout_width="132dp"
+            android:layout_height="140dp"
             android:layout_gravity="center"
             app:srcCompat="@drawable/profile" />
 
@@ -91,7 +91,7 @@
             android:id="@+id/editprofile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="25dp"
             android:text="프로필 수정" />
 
         <Button

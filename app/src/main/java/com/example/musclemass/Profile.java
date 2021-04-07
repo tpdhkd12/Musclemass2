@@ -46,8 +46,6 @@ public class Profile extends AppCompatActivity {
     // id 와 사진을 비교해줄 어레이리스트 //
     ArrayList<ID_image> id_images;
 
-    // 저장한 이미지를 불러오기 위한 어레이 리스트 //
-    ArrayList<ID_image> save_id_image;
 
 
     Uri imageuri;

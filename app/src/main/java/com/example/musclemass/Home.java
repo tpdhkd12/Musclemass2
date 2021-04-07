@@ -38,6 +38,7 @@ public class Home extends AppCompatActivity {
     ArrayList<Userinfo> connectuser = new ArrayList<>();
 
     ArrayList<Userinfo> userinfo;
+    boolean login1 = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,10 +66,13 @@ public class Home extends AppCompatActivity {
                                 name = userinfo.get(i).getName();
                                 nickname = userinfo.get(i).getNickname();
 
+
+
                                 if (id.equals(login_id.getText().toString()) && pw.equals(login_pw.getText().toString())) {
                                     Userinfo userinfo = new Userinfo(id,pw,name,nickname);
 
                                     connectuser.add(userinfo);
+                                    login1 = true;
 
                                     SharedPreferences sharedPreferences = getSharedPreferences("connectuser", MODE_PRIVATE);
                                     SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -82,8 +86,12 @@ public class Home extends AppCompatActivity {
                                     finish();
                                 }
                             }
-//
-//                            Toast.makeText(getApplicationContext(), "아이디와 비밀번호가 일치하지 않습니다. " , Toast.LENGTH_SHORT).show();
+
+                            if (login1 == false){
+
+                              Toast.makeText(getApplicationContext(), "아이디와 비밀번호가 일치하지 않습니다. " , Toast.LENGTH_SHORT).show();
+
+                            }
 
                     }
                 });

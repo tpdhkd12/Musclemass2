@@ -49,12 +49,17 @@
         android:layout_height="296dp"
         android:orientation="vertical">
 
-        <CalendarView
-            android:id="@+id/musclecalendar"
+
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            android:id="@+id/musclecalendarView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:mcv_selectionColor="#00F"
+            app:mcv_showOtherDates="all" />
+
 
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -62,49 +67,35 @@
         android:orientation="horizontal">
 
 
-        <LinearLayout
-            android:layout_width="211dp"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+        <TextView
+            android:id="@+id/date_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:text="" />
 
-            <Button
-                android:id="@+id/watch_musclechart"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="차트보기" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/add_musclerecord"
-                android:layout_width="110dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:gravity="center"
-                android:text="기록 추가" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/add_musclerecord"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:text="기록 추가" />
 
 
     </LinearLayout>
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView4"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/muscle_record_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="30dp" />
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 </LinearLayout>
