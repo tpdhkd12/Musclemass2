@@ -158,10 +158,12 @@ public class Musclerecord extends AppCompatActivity implements Serializable {
 
                 for (int i = 0; i < load_muscle.size(); i++) {
                     if (putdate.equals(load_muscle.get(i).getDay())) {
+                        if (load_muscle.get(i).getId().equals(connect_id)) {
 
-                        save_muscle.add(load_muscle.get(i));
 
+                            save_muscle.add(load_muscle.get(i));
 
+                        }
                     }
 
                 }

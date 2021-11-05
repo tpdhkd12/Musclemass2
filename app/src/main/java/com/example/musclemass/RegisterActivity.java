@@ -119,6 +119,8 @@ public class RegisterActivity extends AppCompatActivity {
         id_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                cf = false;
+                exist = false;
                 for (int i =0; i<userinfo.size(); i++){
                     if (register_id.getText().toString().equals(userinfo.get(i).getId()) ){
 

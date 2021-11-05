@@ -181,19 +181,20 @@ public class Dietrecord extends AppCompatActivity {
 
                 for (int i = 0; i < load_diet.size(); i++) {
                     if (diet_date.equals(load_diet.get(i).getDay())) {
+                        if (connect_id.equals(load_diet.get(i).getId())) {
 
-                        foodname =load_diet.get(i).getFoodname();
-                        carbohydrate = load_diet.get(i).getCarbohydrate();
-                        protein = load_diet.get(i).getProtein();
-                        fat = load_diet.get(i).getFat();
-                        day = load_diet.get(i).getDay();
-                        id = load_diet.get(i).getId();
-                        timeStamp = load_diet.get(i).getTimeStamp();
+                            foodname = load_diet.get(i).getFoodname();
+                            carbohydrate = load_diet.get(i).getCarbohydrate();
+                            protein = load_diet.get(i).getProtein();
+                            fat = load_diet.get(i).getFat();
+                            day = load_diet.get(i).getDay();
+                            id = load_diet.get(i).getId();
+                            timeStamp = load_diet.get(i).getTimeStamp();
 
-                        Diet_item diet_item = new Diet_item(foodname,carbohydrate,protein,fat,day,id,timeStamp);
+                            Diet_item diet_item = new Diet_item(foodname, carbohydrate, protein, fat, day, id, timeStamp);
 
-                        save_diet.add(diet_item);
-
+                            save_diet.add(diet_item);
+                        }
 
                     }
 
